@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'modules/userInterface';
-import { JwtService } from '../jwt.service';
-import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
+import { LoginRule } from '../../../modules/loginInterface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,22 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   @Input() users: Array<User>;
-  public email: string;
-  public password: string;
-  public accessToken: Observable<{access_token: string}>;
+  loggedUser: LoginRule = {
+    email: '',
+    password: ''
+  };
 
-  constructor(private jwtService: JwtService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
-  public onSubmit() {
-    this.accessToken = this.jwtService.login(this.email, this.password);
+  loginUser() {
+    this.auth.loginUser(this.loggedUser).subscribe(
+      res => {
+        console.log(res);
+        localStorage.setItem('token', res.response);
+        this.router.navigate(['/']);
+      },
+      err => console.log(err)
+    );
   }
 
   ngOnInit() {
