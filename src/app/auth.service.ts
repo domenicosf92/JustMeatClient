@@ -17,4 +17,12 @@ export class AuthService {
   public loginUser(loginUser: LoginRule) {
     return this.httpClient.post<any>(`${this.authUrl}/login`, loginUser);
   }
+
+  public loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  public getToken() {
+    return localStorage.getItem('token');
+  }
 }
