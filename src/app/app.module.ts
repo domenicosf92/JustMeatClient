@@ -12,6 +12,12 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { OrderComponent } from './order/order.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { FilterRestaurantsComponent } from './filter-restaurants/filter-restaurants.component';
+import { RestaurantsListComponent } from './restaurants/restaurants-list/restaurants-list.component';
+import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,14 @@ import { TokenInterceptorService } from './token-interceptor.service';
     LoginComponent,
     UsersComponent,
     RegisterComponent,
-    OrderComponent
+    OrderComponent,
+    NavbarComponent,
+    HomepageComponent,
+    RestaurantComponent,
+    FilterRestaurantsComponent,
+    RestaurantComponent,
+    RestaurantsComponent,
+    RestaurantsListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+.text-gray {
+    color: #aaa;
+}
+img{
+    border-radius: 10px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+a:hover h5{
+    text-decoration: underline;
+}
+a h5{
+    font-weight: 300;
+}
+a .restaurant-address{
+    text-decoration: none!important;
+}
+

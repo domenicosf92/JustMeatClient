@@ -1,0 +1,29 @@
+<section class="search-banner text-white py-3 bg-main" id="search-banner">
+        <div class="container py-5 my-5">
+            <div class="row text-center pb-4">
+                <div class="col-md-12">
+                    <h1 class="main-header">Ordinare non è mai stato così Flex</h1>
+                    <p class="main-p text-center">Ordina dai ristoranti più flex della tua città</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card acik-renk-form">
+                        <div class="card-body">
+                            <p class="font-weight-light text-dark text-center">Inserisci la città e trova i ristoranti più vicini a te</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group ">
+                                        <input type="text" [(ngModel)]="citySearched " class="form-control" placeholder="Città di consegna">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-order pl-5 pr-5" (click)="onSearchRestaurants(citySearched)">Trova i Ristoranti</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
