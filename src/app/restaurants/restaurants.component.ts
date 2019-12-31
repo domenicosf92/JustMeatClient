@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {RestaurantsService} from './restaurants.service'
+import {RestaurantsService} from './restaurants.service';
 import { Restaurant } from './restaurants.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,21 +8,21 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-restaurants',
   templateUrl: './restaurants.component.html',
   styleUrls: ['./restaurants.component.css'],
-  providers:[RestaurantsService]
+  providers: [RestaurantsService]
 })
 export class RestaurantsComponent implements OnInit {
-  public restaurants : Restaurant[] = [];
-  public city : string;
+  public restaurants: Restaurant[] = [];
+  public city: string;
   constructor(private route: ActivatedRoute ,
-    private restaurantsService : RestaurantsService) { }
+              private restaurantsService: RestaurantsService) { }
 
   ngOnInit() {
     this.city = this.route.snapshot.paramMap.get('city').toLowerCase();
     this.restaurantsService.getRestaurantsByCity(this.capitalizeFirstLetter(this.city)).then(results => {
       this.restaurants = results;
-    })
+    });
   }
-  capitalizeFirstLetter(city:string) {
+  capitalizeFirstLetter(city: string) {
     return city.charAt(0).toUpperCase() + city.slice(1);
-}
+  }
 }

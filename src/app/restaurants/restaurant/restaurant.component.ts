@@ -11,9 +11,21 @@ import {ActivatedRoute} from '@angular/router';
 })
 
 export class RestaurantComponent implements OnInit {
-  public restaurant : Restaurant;
-  public restaurantName : string;
-  constructor(public restaurantsService : RestaurantsService ,
+  restaurant: Restaurant = {
+    id: '',
+    name: '',
+    address: '',
+    city: '',
+    email: '',
+    plate: [{
+      name: '',
+      price: 0
+    }],
+    rating: '',
+    typology: []
+  };
+  public restaurantName: string;
+  constructor(public restaurantsService: RestaurantsService ,
               private route: ActivatedRoute) {}
 
   async ngOnInit() {

@@ -8,17 +8,17 @@ import { Restaurant } from './restaurants.model';
 })
 export class RestaurantsService {
 
-  private apiURL = `http://localhost:3001/restaurants`;
+  private apiURL = `http://localhost:3006/restaurants`;
   constructor(private httpClient: HttpClient) { }
-  
-  public getRestaurants() : Promise<Restaurant[]>{
+
+  public getRestaurants(): Promise<Restaurant[]> {
     return this.httpClient.get<Restaurant[]>(`${this.apiURL}`).toPromise();
   }
 
-  public async getRestaurantsByCity(city:string) : Promise<Restaurant[]>{
-    return this.httpClient.get<Restaurant[]>(`${this.apiURL}/?city=${city}`).toPromise();
+  public async getRestaurantsByCity(city: string): Promise<Restaurant[]> {
+    return this.httpClient.get<Restaurant[]>(`${this.apiURL}?city=${city}`).toPromise();
   }
-  public getRestaurantsByName(name:string) : Promise<Restaurant>{
-    return this.httpClient.get<Restaurant>(`${this.apiURL}/`+name).toPromise();
+  public async getRestaurantsByName(name: string): Promise<Restaurant> {
+    return this.httpClient.get<Restaurant>(`${this.apiURL}/${name}`).toPromise();
   }
 }

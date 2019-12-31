@@ -7,15 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  citySearched : string;
+  citySearched: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSearchRestaurants(city:string) {
-    this.router.navigate(['/restaurants',city]);
+  onSearchRestaurants(city: string) {
+    this.router.navigate(['/restaurants', city]);
   }
 
 }
