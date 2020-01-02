@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter-restaurants/filter.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,7 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
 
 @NgModule({
   declarations: [
+    FilterPipe,
     AppComponent,
     LoginComponent,
     UsersComponent,
@@ -38,7 +41,8 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [AuthService, AuthGuard,
     {

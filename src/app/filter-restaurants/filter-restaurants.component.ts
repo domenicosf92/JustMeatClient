@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterService } from './filter.service';
 
 @Component({
   selector: 'app-filter-restaurants',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-restaurants.component.css']
 })
 export class FilterRestaurantsComponent implements OnInit {
-
-  constructor() { }
+  constructor(public filterService:FilterService) { }
 
   ngOnInit() {
+    this.filterService.getSelectedTypology();
   }
 
 }
