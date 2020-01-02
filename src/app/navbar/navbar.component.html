@@ -9,29 +9,32 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-          <ul [hidden]="!isAdmin" class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Ordina</a>
+              <a class="nav-link" *ngIf="authService.loggedIn()" [hidden]="authService.checkAdmin()" href="#">Ordina</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ordini</a>
+              <a class="nav-link" *ngIf="authService.checkAdmin()"  href="#">Ordini</a>
             </li>
           </ul>
-          <ul [hidden]="isAdmin" class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Nuovo Ristorante</a>
+                  <a class="nav-link" *ngIf="authService.checkAdmin()" href="#">Nuovo Ristorante</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="order" >Ordini</a>
+                  <a class="nav-link" [hidden]="authService.checkAdmin()" *ngIf="authService.loggedIn()" routerLink="order" >I miei ordini</a>
                 </li>
               </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink='./login'>Accedi</a>
+                    <a class="nav-link" *ngIf="!authService.loggedIn()" routerLink='./login'>Accedi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink='./register'>Registrati</a>
+                    <a class="nav-link" *ngIf="!authService.loggedIn()" routerLink='./register'>Registrati</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="cursor: pointer" *ngIf="authService.loggedIn()" (click)="authService.logoutUser()">Logout</a>
+              </li>
           </ul>
         </div>
     </div>

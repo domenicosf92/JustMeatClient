@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import { NewUser } from '../../modules/userInterface';
 import { HttpClient } from '@angular/common/http';
 import { LoginRule } from '../../modules/loginInterface';
+import { Router } from '@angular/router';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   authUrl = 'http://localhost:3006/users';
-  constructor(private httpClient: HttpClient) { }
+  token: string;
+  decoded: any;
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   public registerUser(newUser: NewUser) {
     return this.httpClient.post<any>(`${this.authUrl}/create`, newUser);
@@ -22,7 +26,25 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
+  public logoutUser() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
+  }
+
   public getToken() {
     return localStorage.getItem('token');
+  }
+
+  public checkAdmin(): boolean {
+    if (this.loggedIn()) {
+      this.token = this.getToken();
+      this.decoded = jwt_decode(this.token);
+      if (this.decoded.username === 'admin' ) {
+        console.log(this.decoded);
+        return true;
+      }
+    }
+    console.log(this.decoded);
+    return false;
   }
 }
