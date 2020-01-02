@@ -12,5 +12,5 @@
         email: string;
         plate: Plate[];
         rating?: any;
-        typology: string[];
+        typology: string;
     }

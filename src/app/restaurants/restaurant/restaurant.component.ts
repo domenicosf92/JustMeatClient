@@ -22,7 +22,7 @@ export class RestaurantComponent implements OnInit {
       price: 0
     }],
     rating: '',
-    typology: []
+    typology: ''
   };
   public restaurantName: string;
   constructor(public restaurantsService: RestaurantsService ,
