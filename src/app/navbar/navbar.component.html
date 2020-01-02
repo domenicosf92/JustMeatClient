@@ -19,7 +19,7 @@
           </ul>
           <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" *ngIf="authService.checkAdmin()" href="#">Nuovo Ristorante</a>
+                  <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink='./newrestaurant'>Nuovo Ristorante</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" [hidden]="authService.checkAdmin()" *ngIf="authService.loggedIn()" routerLink="order" >I miei ordini</a>
