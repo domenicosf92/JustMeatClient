@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from '../restaurants.service';
 import { Restaurant } from '../restaurants.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-restaurant',
@@ -16,16 +17,33 @@ export class NewRestaurantComponent implements OnInit {
     email: '',
     plate: [{
       name: '',
-      price: 0
+      price: null
+    },
+    {
+      name: '',
+      price: null
+    },
+    {
+      name: '',
+      price: null
+    },
+    {
+      name: '',
+      price: null
+    },
+    {
+      name: '',
+      price: null
     }],
-    rating: '',
+    rating: null,
     typology: ''
   };
 
-  constructor(private restService: RestaurantsService) { }
+  constructor(private restService: RestaurantsService, private router: Router) { }
 
   public createRestaurant() {
     this.restService.createRestaurant(this.restaurant);
+    this.router.navigate(['/']);
   }
 
   ngOnInit() {

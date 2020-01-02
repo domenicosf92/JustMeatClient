@@ -39,12 +39,10 @@ export class AuthService {
     if (this.loggedIn()) {
       this.token = this.getToken();
       this.decoded = jwt_decode(this.token);
-      if (this.decoded.username === 'admin' ) {
-        console.log(this.decoded);
+      if (this.decoded.isAdmin === true ) {
         return true;
       }
     }
-    console.log(this.decoded);
     return false;
   }
 }
