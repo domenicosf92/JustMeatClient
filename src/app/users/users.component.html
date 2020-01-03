@@ -16,7 +16,7 @@
         <td>{{user.username}}</td>
         <td>{{user.address}}</td>
         <td>{{user.email}}</td>
-        <td><button type="button" class="btn btn-danger" (click)="deleteUser()">X</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">X</button></td>
       </tr>
     </tbody>
   </table>
