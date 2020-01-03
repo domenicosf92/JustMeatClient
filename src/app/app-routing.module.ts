@@ -10,12 +10,23 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NewRestaurantComponent } from './restaurants/new-restaurant/new-restaurant.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user/user.component';
 
 
 const routes: Routes = [
-  {path : '', component : HomepageComponent},
-  {path : 'restaurants/:restaurant/menu' , component : RestaurantComponent},
-  {path : 'restaurants/:city', component : RestaurantsComponent},
+  {
+    path : '',
+    component : HomepageComponent
+  },
+  {
+    path : 'restaurants/:restaurant/menu',
+    component : RestaurantComponent
+  },
+  {
+    path : 'restaurants/:city',
+    component : RestaurantsComponent
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -28,11 +39,20 @@ const routes: Routes = [
     path: 'orders',
     component: OrderListComponent,
     canActivate: [AuthGuard]
-
   },
   {
     path: 'newrestaurant',
     component: NewRestaurantComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user',
+    component: UserComponent,
     canActivate: [AuthGuard]
   }
 ];

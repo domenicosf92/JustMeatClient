@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'modules/userInterface';
+import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  users: Array<User>;
+  userId: string;
 
-  ngOnInit() {
+  constructor(private usersService: UsersService) { }
+
+  public async deleteUser() {
+    await this.usersService.deleteUser(this.userId);
+  }
+
+  async ngOnInit() {
+    this.users = await this.usersService.getUsers();
   }
 
 }

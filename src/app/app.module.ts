@@ -22,6 +22,7 @@ import { RestaurantsListComponent } from './restaurants/restaurants-list/restaur
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 import { NewRestaurantComponent } from './restaurants/new-restaurant/new-restaurant.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
+import { UserComponent } from './users/user/user/user.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { OrderListComponent } from './order/order-list/order-list.component';
     RestaurantsComponent,
     RestaurantsListComponent,
     NewRestaurantComponent,
-    OrderListComponent
+    OrderListComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
