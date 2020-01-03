@@ -5,9 +5,8 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
 export class FilterService {
-    name: String;
   selectedTypology: TagRestaurant[];
-  searchText: String = "";
+  searchText: string = "";
   selectedCount: number = 0;
 
   typology = [
@@ -55,8 +54,8 @@ export class FilterService {
   getTypology(){
     return this.typology;
   }
-
-  setSearchTerm(term:String){
+  
+  setSearchTerm(term:string){
     this.searchText = term;
   }
   
@@ -83,22 +82,8 @@ export class FilterService {
     this.setSelectedTypology(this.getTypology().filter(g => {
       if (g.id == id)
         g.selected = false;
- 
       return true;
     }));
     this.getSelectedTypology();
-  }
- 
-  //Clear term types by user
-  clearFilter(){
-    this.selectedCount = 0;
-    this.selectedTypology = this.typology.filter( g => {
-      g.selected = false;
-      return (g.selected);
-    });
-  }
-
-  clearSelection(){
-    this.searchText = "";
   }
 }

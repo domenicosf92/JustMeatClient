@@ -7,6 +7,7 @@ import { FilterService } from './filter.service';
   styleUrls: ['./filter-restaurants.component.css']
 })
 export class FilterRestaurantsComponent implements OnInit {
+
   constructor(public filterService:FilterService) { }
 
   ngOnInit() {
