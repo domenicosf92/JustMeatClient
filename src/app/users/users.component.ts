@@ -10,12 +10,11 @@ import { UsersService } from './users.service';
 export class UsersComponent implements OnInit {
 
   users: Array<User>;
-  userId: string;
 
   constructor(private usersService: UsersService) { }
 
-  public async deleteUser() {
-    await this.usersService.deleteUser(this.userId);
+  public async deleteUser(id: any) {
+    await this.usersService.deleteUser(id);
   }
 
   async ngOnInit() {
