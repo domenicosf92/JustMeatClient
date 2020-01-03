@@ -33,6 +33,11 @@ const routes: Routes = [
     path: 'newrestaurant',
     component: NewRestaurantComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'orders',
+    component: OrderComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
