@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NewRestaurantComponent } from './restaurants/new-restaurant/new-restaurant.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
 
 
 const routes: Routes = [
@@ -24,19 +25,14 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'order',
-    component: OrderComponent,
+    path: 'orders',
+    component: OrderListComponent,
     canActivate: [AuthGuard]
 
   },
   {
     path: 'newrestaurant',
     component: NewRestaurantComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'orders',
-    component: OrderComponent,
     canActivate: [AuthGuard]
   }
 ];

@@ -8,7 +8,7 @@ import { FilterService } from './filter.service';
 })
 export class FilterRestaurantsComponent implements OnInit {
 
-  constructor(public filterService:FilterService) { }
+  constructor(public filterService: FilterService) { }
 
   ngOnInit() {
     this.filterService.getSelectedTypology();

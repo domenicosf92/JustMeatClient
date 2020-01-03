@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
   })
 export class FilterService {
   selectedTypology: TagRestaurant[];
-  searchText: string = "";
-  selectedCount: number = 0;
+  searchText = '';
+  selectedCount = 0;
 
   typology = [
     {
@@ -45,43 +45,45 @@ export class FilterService {
       id: 7,
       selected: false
     }
-  ]
+  ];
 
-  constructor() { 
+  constructor() {
     this.getSelectedTypology();
   }
 
-  getTypology(){
+  getTypology() {
     return this.typology;
   }
-  
-  setSearchTerm(term:string){
+
+  setSearchTerm(term: string) {
     this.searchText = term;
   }
-  
-  getSearchTerm(){
+
+  getSearchTerm() {
     return this.searchText;
   }
 
   // Getting Selected Games and Count
-  getSelectedTypology(){
+  getSelectedTypology() {
     this.selectedCount = 0;
     this.selectedTypology = this.typology.filter( g => {
-      if(g.selected)
+      if (g.selected) {
       this.selectedCount++;
+      }
       return (g.selected);
     });
   }
-  setSelectedTypology(selectedTypology:TagRestaurant[]){
+  setSelectedTypology(selectedTypology: TagRestaurant[]) {
     this.selectedTypology = selectedTypology;
   }
- 
- 
-  //Delete Single Listed Game Tag
+
+
+  // Delete Single Listed Game Tag
   deleteGame(id: number) {
     this.setSelectedTypology(this.getTypology().filter(g => {
-      if (g.id == id)
+      if (g.id == id) {
         g.selected = false;
+      }
       return true;
     }));
     this.getSelectedTypology();
