@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {RestaurantsService} from './restaurants.service';
 import { Restaurant } from './restaurants.model';
 import { ActivatedRoute } from '@angular/router';
+import { FilterService } from '../filter-restaurants/filter.service';
 
 @Component({
   selector: 'app-restaurants',
@@ -14,12 +15,17 @@ export class RestaurantsComponent implements OnInit {
   public restaurants: Restaurant[] = [];
   public city: string;
   constructor(private route: ActivatedRoute ,
-              private restaurantsService: RestaurantsService) { }
+              private restaurantsService: RestaurantsService,
+              private filterService:FilterService ) { }
 
   ngOnInit() {
     this.city = this.route.snapshot.paramMap.get('city').toLowerCase();
     this.restaurantsService.getRestaurantsByCity(this.capitalizeFirstLetter(this.city)).then(results => {
-      this.restaurants = results;
+      this.restaurants = results.filter( it => {
+        it.plate.filter(tag =>{
+          return tag.name.toLowerCase().includes(this.filterService.getSearchTerm());
+        });
+      });
     });
   }
   capitalizeFirstLetter(city: string) {

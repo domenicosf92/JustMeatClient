@@ -1,5 +1,5 @@
 export interface TagRestaurant{
-    name: String,
+    name: string,
     id: number,
     selected: boolean
 }

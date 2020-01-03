@@ -3,10 +3,6 @@
         <div class="filter-wrap">
             <input [(ngModel)]="filterService.searchText" placeholder="Filtra..." class="filter-input" (keyup)="filterService.setSearchTerm(filterService.searchText)">
         </div>
-        <div class="selected-games-wrap">
-            <div class="selected-game" *ngFor="let s of filterService.getSelectedTypology()" >
-            </div>
-        </div>
         <h4 class="ml-3">Categorie</h4>
         <ul class="cd-filter-content cd-filters list">
             <li *ngFor="let type of filterService.getTypology() | filter : filterService.getSearchTerm()">
@@ -19,11 +15,13 @@
             </li>
         </ul> <!-- cd-filter-content -->
     </div> <!-- cd-filter-block -->            
-        <div class="cd-filter-block">
+        <!-- <div class="cd-filter-block">
             <h4 class="ml-3">Scegli un rating</h4>
             <ul class="cd-filter-content cd-filters list">
                     <label class="p-1 mt-2 d-flex align-items-center">
-                            <input checked type="checkbox" />
+                            <input  type="checkbox"
+                                    name="rating5"
+                                    value="5"/>
                             <span class="ml-2">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -33,7 +31,10 @@
                             </span>
                         </label>
                         <label class="p-1 mt-2 d-flex align-items-center">
-                            <input checked type="checkbox" />
+                            <input  type="checkbox"
+                                name="rating4" 
+                                value="4"
+                                [checked] = ratingSelected/>
                             <span class="ml-2">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -43,7 +44,9 @@
                             </span>
                         </label>
                         <label class="p-1 mt-2 d-flex align-items-center">
-                            <input checked type="checkbox" />
+                            <input  type="checkbox" 
+                                    name="rating3"
+                                    value="3"/>
                             <span class="ml-2">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -53,7 +56,9 @@
                             </span>
                         </label>
                         <label class="p-1 mt-2 d-flex align-items-center">
-                            <input type="checkbox" />
+                            <input type="checkbox" 
+                                    name="rating2"
+                                    value="2"/>
                             <span class="ml-2">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -63,7 +68,9 @@
                             </span>
                         </label>
                         <label class="p-1 mt-2 d-flex align-items-center">
-                            <input type="checkbox" />
+                            <input type="checkbox" 
+                                    name="rating1"
+                                    value="1"/>
                             <span class="ml-2">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star "></span>
@@ -72,7 +79,8 @@
                                 <span class="fa fa-star "></span>
                             </span>
                         </label>
-            </ul> <!-- cd-filter-content -->
-        </div> <!-- cd-filter-block -->
+            </ul>
+        </div>  -->
+        <!-- cd-filter-block -->
         <!-- Selected Typology-->
 </div> <!-- cd-filter -->
