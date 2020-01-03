@@ -5,23 +5,9 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
 export class FilterService {
-<<<<<<< Updated upstream
   selectedTypology: TagRestaurant[];
   searchText = '';
   selectedCount = 0;
-=======
-  selectedTypology: TagRestaurant[] = [
-    {
-    name: "",
-    id: null,
-    selected: false
-    }
-  ];
-  searchText: string = "";
-  tagSelected : string= "";
-  selectedCount: number = 0;
->>>>>>> Stashed changes
-
   typology = [
     {
       name: 'Pizzeria',
@@ -35,12 +21,8 @@ export class FilterService {
     }
   ];
 
-<<<<<<< Updated upstream
   constructor() {
     this.getSelectedTypology();
-=======
-  constructor() { 
->>>>>>> Stashed changes
   }
 
   getTypology() {
@@ -55,13 +37,8 @@ export class FilterService {
     return this.searchText;
   }
 
-<<<<<<< Updated upstream
-  // Getting Selected Games and Count
-  getSelectedTypology() {
-=======
   // Getting Selected Typo and Count
   getSelectedTypology(){
->>>>>>> Stashed changes
     this.selectedCount = 0;
     this.selectedTypology = this.typology.filter( g => {
       if (g.selected) {
@@ -73,8 +50,6 @@ export class FilterService {
   setSelectedTypology(selectedTypology: TagRestaurant[]) {
     this.selectedTypology = selectedTypology;
   }
-
-
   // Delete Single Listed Game Tag
   deleteGame(id: number) {
     this.setSelectedTypology(this.getTypology().filter(g => {

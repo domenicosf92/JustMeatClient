@@ -8,13 +8,8 @@ export class FilterPipe implements PipeTransform {
     if (!searchText) { return items; }
 
     searchText = searchText.toLowerCase();
-<<<<<<< Updated upstream
-    return items.filter( it => {
-          return it.name.toLowerCase().includes(searchText);
-=======
         return items.filter( it => {
           return it.typology.toLowerCase().includes(searchText);
->>>>>>> Stashed changes
         });
    }
 }
