@@ -11,7 +11,7 @@ export class OrderService {
   constructor(private httpClient: HttpClient) { }
 
   public getOrdersByUserId(userId: string): Promise<Order[]> {
-    return this.httpClient.get<Order[]>(`${this.orderUrl}?userId=${userId}`).toPromise();
+    return this.httpClient.get<Order[]>(`${this.orderUrl}/user/${userId}`).toPromise();
   }
   public getOrders(): Promise<Order[]> {
     return this.httpClient.get<Order[]>(`${this.orderUrl}`).toPromise();

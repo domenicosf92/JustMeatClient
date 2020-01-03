@@ -18,6 +18,9 @@ export class RestaurantsService {
   public async getRestaurantsByCity(city: string): Promise<Restaurant[]> {
     return this.httpClient.get<Restaurant[]>(`${this.apiURL}?city=${city}`).toPromise();
   }
+  public async getRestaurantById(idRestaurant: string): Promise<Restaurant> {
+    return this.httpClient.get<Restaurant>(`${this.apiURL}?id=${idRestaurant}`).toPromise();
+  }
   public async getRestaurantsByName(name: string): Promise<Restaurant> {
     return this.httpClient.get<Restaurant>(`${this.apiURL}/${name}`).toPromise();
   }

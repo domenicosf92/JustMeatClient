@@ -16,15 +16,13 @@
             <li class="nav-item">
               <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink="./users" routerLinkActive="active" >Utenti Iscritti</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink='./newrestaurant'>Nuovo Ristorante</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [hidden]="authService.checkAdmin()" *ngIf="authService.loggedIn()" routerLink="./orders" >I miei ordini</a>
+            </li>
           </ul>
-          <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink='./newrestaurant'>Nuovo Ristorante</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" [hidden]="authService.checkAdmin()" *ngIf="authService.loggedIn()" routerLink="./orders" >I miei ordini</a>
-                </li>
-              </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item">
                     <a class="nav-link" *ngIf="!authService.loggedIn()" routerLink='./login'>Accedi</a>
