@@ -5,7 +5,7 @@
         </div>
 		<div class="col-9">
             <ul class="list-group  ">
-                <li class="list-group-item mb-4 shadow" *ngFor = 'let restaurant of restaurants | filter : filterService.getSearchTerm()' >
+                <li class="list-group-item mb-4 shadow" *ngFor = 'let restaurant of restaurants | filter : filterService.getSearchTerm() ' >
                     <app-restaurants-list 
                         [restaurant]="restaurant">
                     </app-restaurants-list>

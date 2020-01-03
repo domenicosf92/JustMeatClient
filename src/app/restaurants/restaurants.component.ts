@@ -14,21 +14,19 @@ import { FilterService } from '../filter-restaurants/filter.service';
 export class RestaurantsComponent implements OnInit {
   public restaurants: Restaurant[] = [];
   public city: string;
+  public tag : string[];
+  capitalizeFirstLetter(city: string) {
+    return city.charAt(0).toUpperCase() + city.slice(1);
+  }
   constructor(private route: ActivatedRoute ,
               private restaurantsService: RestaurantsService,
               private filterService:FilterService ) { }
 
   ngOnInit() {
+    this.filterService.getSelectedTypology();
     this.city = this.route.snapshot.paramMap.get('city').toLowerCase();
     this.restaurantsService.getRestaurantsByCity(this.capitalizeFirstLetter(this.city)).then(results => {
-      this.restaurants = results.filter( it => {
-        it.plate.filter(tag =>{
-          return tag.name.toLowerCase().includes(this.filterService.getSearchTerm());
-        });
-      });
-    });
-  }
-  capitalizeFirstLetter(city: string) {
-    return city.charAt(0).toUpperCase() + city.slice(1);
-  }
+      this.restaurants = results
+  })
+}
 }
