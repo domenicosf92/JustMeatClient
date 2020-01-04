@@ -10,9 +10,9 @@
                     </div>
                 </h1> 
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let plate of restaurant.plate">
+                    <li class="list-group-item" *ngFor="let plate of restaurant.plate"(click)="addPlate(plate)">
                         {{plate.name}}
-                        <span class="desc badge">{{plate.price}} €</span>
+                        <span class="desc badge ">{{plate.price}} €</span>
                     </li>
                 </ul>
             </div>
@@ -29,23 +29,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <p><strong>Product name</strong></p>
-                            <p><small>Product description</small></p>
+                <div class="card-body" *ngIf="plates">
+                    <div class="row border border-warning rounded bg-light align-middle py-2 mb-2"*ngFor="let plate of plates">
+                        <div class="col-6 my-auto">
+                            <p class="my-0" ><strong>{{plate.name}}</strong></p>
                         </div>
-                        <div class="col-6 ">
+                        <div  class="col-6 my-auto">
                             <div class="row">
-                            <div class="col-6 text-right">
-                                <p><strong>$50.00</strong></p>
-                            </div>
-                            <div class="col-6">
-                                <input type="text" class="form-control" value="1">
+                            <div class="col-6 text-right my-auto">
+                                <p class="my-0"><strong>{{plate.price | number : '1.2-2'}}€</strong></p>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-link btn-sm">
-                                    <span class="fa fa-trash"></span> Elimina
+                                <button type="button" class="btn btn-link btn-sm" (click)="deletePlate(plate)">
+                                    <span class="fa fa-trash"></span>
                                 </button>
                             </div>
                         </div>
@@ -56,19 +52,17 @@
                             <div class="col-9">
                                 <h6 class="text-right">Totale</h6>
                                 <h6 class="text-right">Iva</h6>
-                                <h6 class="text-right">Spese di spedizione</h6>
                             </div>
                             <div class="col-3">
-                                <h6 class="text-left">$50.00</h6>
-                                <h6 class="text-left">$4.75</h6>
-                                <h6 class="text-left">$3.95</h6>
+                                <h6 class="text-left">{{getTotalAmount() | number : '1.2-2'}}€</h6>
+                                <h6 class="text-left">{{getTotalAmount()-(100 * getTotalAmount()) / 122 | number : '1.2-2'}} €</h6>
                             </div>
                     </div>
                 </div>
             <div class="card-footer cart-footer">
                 <div class="row">
                     <div class="col-12">
-                        <h4 class="text-right">Totale <strong>$50.00</strong></h4>
+                        <h4 class="text-right">Totale <strong>{{getTotalAmount() | number : '1.2-2'}}€</strong></h4>
                     </div>
                 </div>
                 <div class="row text-center">
