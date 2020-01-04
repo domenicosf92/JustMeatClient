@@ -1,46 +1,63 @@
 <div class="container">
         <div class="table-wrapper">
-            <div class="table-title">
+            <div class="table-title shadow">
                 <div class="row">
                     <div class="col-sm-4">
 						<h2><b>Dettaglio Ordini</b></h2>
 					</div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Ristorante</th>
-						<th>Indirizzo Spedizione</th>
-						<th>Data Ordine</th>						
-                        <th>Status</th>						
-						<th>Totale</th>
-						<th>Piatti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let order of userOrders; let i = index">
-                        <td>{{i+1}}</td>
-                        <ng-container *ngFor="let rest of restaurant">
-                            <td *ngIf="rest.id == order.restaurantId">{{rest.name}}</td>
-                        </ng-container>
-						<td>{{order.shippingAddress}}</td>
-                        <td>{{order.date}}</td>                        
-                        <td *ngIf="order.statusOrder === true" >
-                            <span [ngClass]="{'text-success' : order.statusOrder === true}"
-                                class="status">&bull;
-                            </span>Confermato
-                        </td>
-                        <td *ngIf="order.statusOrder === false" >
-                            <span [ngClass]="{'text-danger' : order.statusOrder === false}"
-                                class="status">&bull;
-                            </span>In attesa 
-                        </td>
-						<td>{{order.totalAmount}} €</td>
-                        <td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
-                     </tr>
-                </tbody>
-            </table>
+            <div class="container border-danger">
+                <div class="row text-left">
+                    <div class="col-1">N°</div>
+                    <div class="col-2">Ristorante</div>
+					<div class="col-2">Indirizzo Spedizione</div>
+					<div class="col-2">Data Ordine</div>						
+                    <div class="col-2">Status</div>						
+					<div class="col-2">Totale</div>
+					<div class="col-1">Piatti</div>
+                </div>
+                <div class="row my-1 py-2 border shadow"  *ngFor="let order of userOrders; let i = index">
+                    <div class="col-1">{{i+1}}</div >
+                    <ng-container *ngFor="let rest of restaurant">
+                        <div class="col-2" *ngIf="rest.id == order.restaurantId">{{rest.name}}</div >
+                    </ng-container>
+					<div class="col-2">{{order.shippingAddress}}</div >
+                    <div class="col-2">{{order.date}}</div >                        
+                    <div class="col-2" *ngIf="order.statusOrder === true" >
+                        <span [ngClass]="{'text-success' : order.statusOrder === true}"
+                            class="status">&bull;
+                        </span>Confermato
+                    </div >
+                    <div class="col-2" *ngIf="order.statusOrder === false" >
+                        <span [ngClass]="{'text-danger' : order.statusOrder === false}"
+                            class="status">&bull;
+                        </span>In attesa 
+                    </div >
+					<div class="col-2">{{order.totalAmount}} €</div >
+                    <div class="col-1"><button class="button-detail" (click)="showDetails= !showDetails"><i class="fa fa-plus-circle fa-2x text-primary"></i></button></div>
+                    <div *ngIf="showDetails" class="col-12">
+                    <table class="table table-striped table-hover">
+                        <col width="80%">
+                        <col>
+                        <col>
+                            <thead>
+                                <tr>
+                                    <th>Elenco Piatti</th>
+                                    <th>Quantità</th>						
+                                    <th>Prezzo</th>						
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let plate of order.orderItems">                      
+                                    <td >{{plate.namePlate}}</td>
+                                    <td>{{plate.quantity}}</td>
+                                    <td>{{plate.price}}€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>     
