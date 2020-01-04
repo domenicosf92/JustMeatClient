@@ -1,10 +1,11 @@
 import { Component, OnInit} from '@angular/core';
 import { RestaurantsService } from '../restaurants.service';
 import { Restaurant, Plate } from '../restaurants.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Order, OrderList } from 'modules/orderInterface';
 import * as jwt_decode from 'jwt-decode';
 import { AuthService } from 'src/app/auth.service';
+import { OrderService } from 'src/app/order/order.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 
 export class RestaurantComponent implements OnInit {
-  order : Order ;
+  order : Order ={};
   plates : OrderList[] = [];
   restaurant: Restaurant = {
     id: '',
@@ -32,8 +33,10 @@ export class RestaurantComponent implements OnInit {
   public restaurantName: string;
   userId: string;
   constructor(public restaurantsService: RestaurantsService ,
+              public orderService : OrderService,
               private route: ActivatedRoute,
-              private auth: AuthService) {}
+              private auth: AuthService,
+              private router: Router) {}
 
   async ngOnInit() {
     this.restaurantName = this.route.snapshot.paramMap.get('restaurant');
@@ -61,15 +64,20 @@ export class RestaurantComponent implements OnInit {
     return totalAmount;
   }
 
-  newOrder(order : Order){
+  sendOrder(){
     var timestampNow = new Date();
     var date = timestampNow.getDate() + "-" + (timestampNow.getMonth()+1) + "-" + timestampNow.getFullYear();
     var time = timestampNow.getHours() + ":" + timestampNow.getMinutes() + ":" + timestampNow.getSeconds();
     var dateOrder = date + " " + time;
-    var uuid = new uuid();
-    order.date = dateOrder;
-    order.id =uuid;
-    order.restaurantId = this.restaurant.id;
-    order.userId = this.userId;
+    this.order.date = dateOrder;
+    this.order.id ="uuid";
+    this.order.restaurantId = this.restaurant.id;
+    this.order.userId = this.userId;
+    this.order.orderItems = this.plates;
+    this.order.totalAmount = this.getTotalAmount();
+    this.order.rating = null,
+    this.order.statusOrder = false
+    this.orderService.newOrder = this.order;
+    this.router.navigate(['/orders/create']);
   }
 }

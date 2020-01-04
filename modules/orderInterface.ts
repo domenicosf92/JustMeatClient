@@ -4,13 +4,13 @@ export interface OrderList {
     price: number;
 }
 export interface Order {
-    id: string;
-    userId: string;
-    restaurantId: string;
-    date: string;
-    shippingAddress: string;
-    orderItems: Array<OrderList>;
-    totalAmount: number;
-    rating: number;
-    statusOrder: boolean;
+    id?: string;
+    userId?: string;
+    restaurantId?: string;
+    date?: string;
+    shippingAddress?: string;
+    orderItems?: Array<OrderList>;
+    totalAmount?: number;
+    rating?: number;
+    statusOrder?: boolean;
 }

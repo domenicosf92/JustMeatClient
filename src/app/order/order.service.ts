@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class OrderService {
+  newOrder : Order ={}
   orderUrl = 'http://localhost:3006/orders';
 
   constructor(private httpClient: HttpClient) { }
@@ -15,5 +16,8 @@ export class OrderService {
   }
   public getOrders(): Promise<Order[]> {
     return this.httpClient.get<Order[]>(`${this.orderUrl}`).toPromise();
+  }
+  public createOrder(order){
+    this.httpClient.post(`${this.orderUrl}/create`,order).toPromise();
   }
 }
