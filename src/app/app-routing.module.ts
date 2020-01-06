@@ -41,9 +41,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'orders/create',
-    component :OrderComponent,
-    canActivate:[AuthGuard]
+    path: 'orders/create',
+    component : OrderComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'newrestaurant',

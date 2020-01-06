@@ -8,9 +8,9 @@ import { Order } from 'modules/orderInterface';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  order : Order = {};
+  order: Order = {};
 
-  constructor(public orderService : OrderService) { }
+  constructor(public orderService: OrderService) { }
 
   ngOnInit() {
     this.order = this.orderService.newOrder;

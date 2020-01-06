@@ -14,17 +14,20 @@ import { Restaurant } from 'src/app/restaurants/restaurants.model';
 export class OrderListComponent implements OnInit {
   userId: string;
   userOrders: Array<Order>;
-  restaurant : Array<Restaurant>;
+  restaurant: Array<Restaurant>;
 
   constructor(private orderService: OrderService,
               private auth: AuthService,
-              private restaurantsService : RestaurantsService) { }
+              private restaurantsService: RestaurantsService) { }
 
   async ngOnInit() {
     const token = this.auth.getToken();
     const decoded = jwt_decode(token) as any;
     this.userId = decoded.subject;
     this.userOrders =  await this.orderService.getOrdersByUserId(this.userId);
+    if (decoded.isAdmin === true) {
+      this.userOrders = await this.orderService.getOrders();
+    }
     this.restaurant = await this.restaurantsService.getRestaurants();
   }
 }
