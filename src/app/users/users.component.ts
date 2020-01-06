@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
 
   public async deleteUser(id: any) {
     await this.usersService.deleteUser(id);
+    window.location.reload();
   }
 
   async ngOnInit() {

@@ -33,6 +33,11 @@ export class OrderListComponent implements OnInit {
     this.restaurants = await this.restaurantsService.getRestaurants();
   }
 
+  changeOrderStatus(orderId: string) {
+    this.orderService.updateStatus(orderId);
+    window.location.reload();
+  }
+
   getRestaurantName(id: string) {
     /* this.restaurant.find(value => {
       if(value.id === id) return value.name;
