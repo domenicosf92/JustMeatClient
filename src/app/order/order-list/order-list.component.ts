@@ -13,9 +13,9 @@ import { Restaurant } from 'src/app/restaurants/restaurants.model';
 })
 export class OrderListComponent implements OnInit {
   userId: string;
-  hideMe=[];
-  orders: Order[]=[];
-  restaurants: Restaurant[]=[];
+  hideMe = [];
+  orders: Order[] = [];
+  restaurants: Restaurant[] = [];
 
   constructor(private orderService: OrderService,
               private auth: AuthService,
@@ -27,18 +27,23 @@ export class OrderListComponent implements OnInit {
     this.userId = decoded.subject;
     if (decoded.isAdmin === true) {
       this.orders = await this.orderService.getOrders();
-    } else{
+    } else {
       this.orders =  await this.orderService.getOrdersByUserId(this.userId);
     }
     this.restaurants = await this.restaurantsService.getRestaurants();
   }
 
-  getRestaurantName(id:string){
+  changeOrderStatus(orderId: string) {
+    this.orderService.updateStatus(orderId);
+    window.location.reload();
+  }
+
+  getRestaurantName(id: string) {
     /* this.restaurant.find(value => {
       if(value.id === id) return value.name;
     }) */
-    for(let rest of this.restaurants){
-      if(rest.id === id) return rest.name;
+    for (const rest of this.restaurants) {
+      if (rest.id === id) { return rest.name; }
     }
   }
 }

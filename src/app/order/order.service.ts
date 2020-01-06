@@ -20,4 +20,8 @@ export class OrderService {
   public createOrder(order) {
     this.httpClient.post(`${this.orderUrl}/create`, order).toPromise();
   }
+
+  public updateStatus(orderID: string) {
+    this.httpClient.put<string>(`${this.orderUrl}/${orderID}/acceptOrder`, {}).toPromise();
+  }
 }
