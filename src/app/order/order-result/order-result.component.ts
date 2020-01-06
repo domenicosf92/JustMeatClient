@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'modules/orderInterface';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-order-result',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-result.component.css']
 })
 export class OrderResultComponent implements OnInit {
-
-  constructor() { }
+  order: Order = {};
+  constructor(public orderService: OrderService) { }
 
   ngOnInit() {
+    this.order = this.orderService.newOrder;
   }
+  
 
 }
