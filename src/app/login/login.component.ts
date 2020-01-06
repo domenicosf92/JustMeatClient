@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'modules/userInterface';
 import { AuthService } from '../auth.service';
 import { LoginRule } from '../../../modules/loginInterface';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
   };
 
 
-  constructor(private auth: AuthService, private router: Router) { }
-
+  constructor(private auth: AuthService,
+               private router: Router,
+               private route: ActivatedRoute) { }
+  returnUrl : string;
   loginUser() {
     this.auth.loginUser(this.loggedUser).subscribe(
       res => {
@@ -31,6 +33,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
 }

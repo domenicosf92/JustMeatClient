@@ -65,19 +65,21 @@ export class RestaurantComponent implements OnInit {
   }
 
   sendOrder(){
-    var timestampNow = new Date();
-    var date = timestampNow.getDate() + "-" + (timestampNow.getMonth()+1) + "-" + timestampNow.getFullYear();
-    var time = timestampNow.getHours() + ":" + timestampNow.getMinutes() + ":" + timestampNow.getSeconds();
-    var dateOrder = date + " " + time;
-    this.order.date = dateOrder;
-    this.order.id ="uuid";
-    this.order.restaurantId = this.restaurant.id;
-    this.order.userId = this.userId;
-    this.order.orderItems = this.plates;
-    this.order.totalAmount = this.getTotalAmount();
-    this.order.rating = null,
-    this.order.statusOrder = false
-    this.orderService.newOrder = this.order;
-    this.router.navigate(['/orders/create']);
+    if(this.plates){
+      var timestampNow = new Date();
+      var date = timestampNow.getDate() + "-" + (timestampNow.getMonth()+1) + "-" + timestampNow.getFullYear();
+      var time = timestampNow.getHours() + ":" + timestampNow.getMinutes() + ":" + timestampNow.getSeconds();
+      var dateOrder = date + " " + time;
+      this.order.date = dateOrder;
+      this.order.id ="uuid";
+      this.order.restaurantId = this.restaurant.id;
+      this.order.userId = this.userId;
+      this.order.orderItems = this.plates;
+      this.order.totalAmount = this.getTotalAmount();
+      this.order.rating = null,
+      this.order.statusOrder = false
+      this.orderService.newOrder = this.order;
+      this.router.navigate(['/orders/create']);
+    }
   }
 }
