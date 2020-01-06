@@ -12,25 +12,17 @@ import { Router } from '@angular/router';
 export class OrderComponent implements OnInit {
   order: Order = {};
 
-<<<<<<< HEAD
-  constructor(public orderService: OrderService) { }
-=======
-  constructor(public orderService : OrderService,
+  constructor(public orderService: OrderService,
               private authService: AuthService,
               private router: Router) { }
->>>>>>> 832b0f65f0ecdb691cb706aa82cac774a6589347
 
   ngOnInit() {
     this.order = this.orderService.newOrder;
   }
 
-  sendOrder(){
-    if(this.authService.loggedIn()){
+  sendOrder() {
       this.orderService.createOrder(this.order);
       this.router.navigate(['orders/order_confirmed']);
-    }else{
-
-    }
   }
 
 }

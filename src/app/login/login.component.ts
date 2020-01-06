@@ -18,15 +18,15 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private auth: AuthService,
-               private router: Router,
-               private route: ActivatedRoute) { }
-  returnUrl : string;
+              private router: Router,
+              private route: ActivatedRoute) { }
+  returnUrl: string;
   loginUser() {
     this.auth.loginUser(this.loggedUser).subscribe(
       res => {
         console.log(res);
         localStorage.setItem('token', res.response);
-        this.router.navigate(['/']);
+        this.router.navigateByUrl(this.returnUrl);
       },
       err => console.log(err)
     );
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
 }
