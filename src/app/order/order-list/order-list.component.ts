@@ -13,8 +13,9 @@ import { Restaurant } from 'src/app/restaurants/restaurants.model';
 })
 export class OrderListComponent implements OnInit {
   userId: string;
-  userOrders: Array<Order>;
-  restaurant: Array<Restaurant>;
+  hideMe=[];
+  orders: Order[]=[];
+  restaurants: Restaurant[]=[];
 
   constructor(private orderService: OrderService,
               private auth: AuthService,
@@ -24,10 +25,20 @@ export class OrderListComponent implements OnInit {
     const token = this.auth.getToken();
     const decoded = jwt_decode(token) as any;
     this.userId = decoded.subject;
-    this.userOrders =  await this.orderService.getOrdersByUserId(this.userId);
     if (decoded.isAdmin === true) {
-      this.userOrders = await this.orderService.getOrders();
+      this.orders = await this.orderService.getOrders();
+    } else{
+      this.orders =  await this.orderService.getOrdersByUserId(this.userId);
     }
-    this.restaurant = await this.restaurantsService.getRestaurants();
+    this.restaurants = await this.restaurantsService.getRestaurants();
+  }
+
+  getRestaurantName(id:string){
+    /* this.restaurant.find(value => {
+      if(value.id === id) return value.name;
+    }) */
+    for(let rest of this.restaurants){
+      if(rest.id === id) return rest.name;
+    }
   }
 }
