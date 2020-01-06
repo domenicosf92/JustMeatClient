@@ -3,6 +3,7 @@ import { User } from 'modules/userInterface';
 import { AuthService } from '../auth.service';
 import { LoginRule } from '../../../modules/loginInterface';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private toastr: ToastrService) { }
   returnUrl: string;
   loginUser() {
     this.auth.loginUser(this.loggedUser).subscribe(
@@ -28,7 +30,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.response);
         this.router.navigateByUrl(this.returnUrl);
       },
-      err => console.log(err)
+      err => {
+        this.toastr.error('Invalid username or password');
+        console.log(err);
+      }
     );
   }
 
