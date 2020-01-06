@@ -12,6 +12,7 @@ import { NewRestaurantComponent } from './restaurants/new-restaurant/new-restaur
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './users/user/user/user.component';
+import { OrderResultComponent } from './order/order-result/order-result.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,11 @@ const routes: Routes = [
     path: 'orders/create',
     component : OrderComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:'orders/order_confirmed',
+    component :OrderResultComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'newrestaurant',
