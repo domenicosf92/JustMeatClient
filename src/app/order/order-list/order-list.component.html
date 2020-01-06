@@ -14,7 +14,7 @@
 					<div class="col-2">Indirizzo Spedizione</div>
 					<div class="col-2">Data Ordine</div>						
                     <div class="col-1">Status</div>						
-					<div class="col-2">Totale</div>
+					<div class="col-1">Totale</div>
                     <div class="col-1">Piatti</div>
                     <div class="col-1">Cambia Stato</div>
                 </div>
@@ -33,7 +33,7 @@
                             class="status">&bull;
                         </span>In attesa 
                     </div >
-                    <div class="col-2">{{order.totalAmount}} €</div >
+                    <div class="col-1">{{order.totalAmount}} €</div >
                     <div class="col-1"><button class="button-detail" (click)="hideMe[i] = !hideMe[i]"><i class="fa fa-plus-circle fa-2x text-primary"></i></button></div>
                     <div class="col-1" [hidden]="!auth.checkAdmin()" (click)="changeOrderStatus(order.id)"><button>C</button></div>
                     <div [hidden]="!hideMe[i]" class="col-12">
