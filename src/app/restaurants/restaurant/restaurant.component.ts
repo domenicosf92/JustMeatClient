@@ -51,6 +51,7 @@ export class RestaurantComponent implements OnInit {
     this.plates.push(plate);
   }
   deletePlate(plate: OrderList) {
+    // tslint:disable-next-line: no-shadowed-variable
     const index = this.plates.findIndex((i, index) => {
       if (i.namePlate === plate.namePlate) {
        return index; }
