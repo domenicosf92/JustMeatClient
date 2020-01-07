@@ -32,8 +32,10 @@
                                     <td align="left" style="padding-top: 20px;">
                                         <table cellspacing="0" cellpadding="0" border="0" width="100%">
                                             <tr>
-                                                <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> Numero ordine # </td>
-                                                <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> {{order.id}} </td>
+                                                <td width="100%" align="center" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> Numero ordine # </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="100%" align="center" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> {{order.id}} </td>
                                             </tr>
                                             <tr *ngFor="let plate of order.orderItems">
                                                 <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> {{plate.name}} </td>

@@ -8,10 +8,10 @@
                  <div class="card-body">
                          <!-- PRODUCT -->
                          <div class="row border border-warning mb-2 py-2" *ngFor="let item of order.orderItems">
-                             <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-10">
+                             <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-9">
                                  <h4 class="product-name"><strong>{{item.name}}</strong></h4>
                              </div>
-                             <div class="col-12 col-sm-12 text-sm-center col-md-2 text-md-right row">
+                             <div class="col-12 col-sm-12 text-sm-center col-md-3 text-md-right row">
                                  <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
                                      <h6><strong>{{item.price | number : '1.2-2'}}€ </strong></h6>
                                  </div>

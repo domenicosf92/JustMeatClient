@@ -19,9 +19,9 @@ export class OrderComponent implements OnInit {
     this.order = this.orderService.newOrder;
   }
 
-  sendOrder() {
+  async sendOrder() {
     if(!this.order || this.order.orderItems.length !== 0){
-      this.orderService.createOrder(this.order);
+      this.orderService.newOrder = await this.orderService.createOrder(this.order);
       this.router.navigate(['orders/order_confirmed']);
     }
   }
