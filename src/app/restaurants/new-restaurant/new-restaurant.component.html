@@ -8,55 +8,50 @@
                 <form class="form">
                     <div class="form-group">
                         <label class="font-weight-bold">Nome</label>
-                        <input type="text" class="form-control rounded-0" placeholder="Insert restaurant name" name="name" [(ngModel)]="restaurant.name" required>
+                        <input type="text" class="form-control rounded-0" placeholder="Inserisci nome ristorante" name="name" [(ngModel)]="restaurant.name" required>
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bold">Indirizzo</label>
-                        <input type="text" class="form-control rounded-0" placeholder="Insert address" name="address" [(ngModel)]="restaurant.address" required>
+                        <input type="text" class="form-control rounded-0" placeholder="Inserisci indirizzo" name="address" [(ngModel)]="restaurant.address" required>
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bold">Città</label>
-                        <input type="text" class="form-control rounded-0" placeholder="Insert city" name="city" [(ngModel)]="restaurant.city" required>
+                        <input type="text" class="form-control rounded-0" placeholder="Inserisci città" name="city" [(ngModel)]="restaurant.city" required>
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bold">Email</label>
-                        <input type="email" class="form-control rounded-0" placeholder="Insert email" name="email" [(ngModel)]="restaurant.email" required>
+                        <input type="email" class="form-control rounded-0" placeholder="Inserisci email" name="email" [(ngModel)]="restaurant.email" required>
                     </div>
-                    <div class="form-group">
-                        <label class="font-weight-bold">Piatti</label>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" [(ngModel)]="restaurant.plate[0].name" class="form-control rounded-0" placeholder="Insert name" name="plate-name"  required>
-                            <label>Prezzo</label>
-                            <input type="number" [(ngModel)]="restaurant.plate[0].price" class="form-control rounded-0" placeholder="Insert price" name="plate-price" required>
-                        </div>
-                        <p class="font-weight-bold text-center">Campi Opzionali</p>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" [(ngModel)]="restaurant.plate[1].name" class="form-control rounded-0" placeholder="Insert name" name="plate-name">
-                            <label>Prezzo</label>
-                            <input type="number" [(ngModel)]="restaurant.plate[1].price" class="form-control rounded-0" placeholder="Insert price" name="plate-price">
-                        </div>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" [(ngModel)]="restaurant.plate[2].name" class="form-control rounded-0" placeholder="Insert name" name="plate-name">
-                            <label>Prezzo</label>
-                            <input type="number" [(ngModel)]="restaurant.plate[2].price" class="form-control rounded-0" placeholder="Insert price" name="plate-price">
-                        </div>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" [(ngModel)]="restaurant.plate[3].name" class="form-control rounded-0" placeholder="Insert name" name="plate-name">
-                            <label>Prezzo</label>
-                            <input type="number" [(ngModel)]="restaurant.plate[3].price" class="form-control rounded-0" placeholder="Insert price" name="plate-price">
-                        </div>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" [(ngModel)]="restaurant.plate[4].name" class="form-control rounded-0" placeholder="Insert name" name="plate-name">
-                            <label>Prezzo</label>
-                            <input type="number" [(ngModel)]="restaurant.plate[4].price" class="form-control rounded-0" placeholder="Insert price" name="plate-price">
-                        </div>
+                    <div class="row justify-content-center">
+                      <div class="col-12">
+                          <button type="button" class="btn btn-primary mb-2" (click)="addPlate()">Aggiungi Piatto</button>
+                        <section class="container border mb-4 p-3" *ngFor="let plate of plates; let i = index;">
+                          <div class="row">
+                            <div class="col-6">
+                                <h4>Piatto {{i + 1}}</h4>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" class="btn btn-danger btn-sm" (click)="removePlate(i)">Rimuovi Piatto</button>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Nome </label>
+                                    <input type="text" class="form-control" [(ngModel)]="plate.name" name="name_{{i}}" placeholder="Inserisci nome piatto"/>
+                                  </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Prezzo</label>
+                                    <input type="text" class="form-control" [(ngModel)]="plate.price" name="price_{{i}}" placeholder="Inserisci prezzo"/>
+                                  </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
                     </div>
-                        <br>
+                    <br>
                     <div class="form-group">
                         <label class="font-weight-bold">Tipologia</label>
                         <input type="text" class="form-control rounded-0" placeholder="Insert restaurant typology" name="typology" [(ngModel)]="restaurant.typology" required>

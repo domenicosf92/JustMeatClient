@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from '../restaurants.service';
-import { Restaurant } from '../restaurants.model';
+import { Restaurant, Plate } from '../restaurants.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,43 +10,34 @@ import { Router } from '@angular/router';
 })
 export class NewRestaurantComponent implements OnInit {
   restaurant: Restaurant = {
-    id: '',
-    name: '',
-    address: '',
-    city: '',
-    email: '',
-    plate: [{
-      name: '',
-      price: null
-    },
-    {
-      name: '',
-      price: null
-    },
-    {
-      name: '',
-      price: null
-    },
-    {
-      name: '',
-      price: null
-    },
-    {
-      name: '',
-      price: null
-    }],
-    rating: null,
-    typology: ''
+
   };
+
+  plates: Plate[] =[{
+    name: "",
+    price: undefined
+  }];
 
   constructor(private restService: RestaurantsService, private router: Router) { }
 
   public createRestaurant() {
+    console.log(this.plates);
+    this.restaurant.plate=this.plates;
+    console.log(this.restaurant.plate);
     this.restService.createRestaurant(this.restaurant);
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
   }
 
   ngOnInit() {
+  }
+  addPlate() {
+    this.plates.push({
+      name: '',
+      price: undefined
+    })
+  }
+  removePlate(i: number) {
+    this.plates.splice(i, 1);
   }
 
 }
