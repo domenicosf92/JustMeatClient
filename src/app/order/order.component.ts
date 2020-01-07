@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from './order.service';
 import { Order, OrderList } from 'modules/orderInterface';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 export class OrderComponent implements OnInit {
   order: Order = {};
   shipmentAddress: string;
+  returnUrl: string;
 
   constructor(public orderService: OrderService,
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
     this.order = this.orderService.newOrder;
@@ -38,7 +40,7 @@ export class OrderComponent implements OnInit {
   }
 
   backToRestaurant() {
-    this.router.navigate(['./']);
+    this.location.back();
   }
 
 }

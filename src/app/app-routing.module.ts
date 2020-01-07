@@ -47,9 +47,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'orders/order_confirmed',
-    component :OrderResultComponent,
-    canActivate:[AuthGuard]
+    path: 'orders/order_confirmed',
+    component : OrderResultComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'newrestaurant',

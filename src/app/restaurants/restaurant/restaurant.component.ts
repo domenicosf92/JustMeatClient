@@ -44,7 +44,6 @@ export class RestaurantComponent implements OnInit {
     const token = this.auth.getToken();
     const decoded = jwt_decode(token) as any;
     this.userId = decoded.subject;
-    console.log(this.userId);
   }
 
   addPlate(plate: OrderList) {
