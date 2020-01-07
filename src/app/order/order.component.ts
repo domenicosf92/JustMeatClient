@@ -19,18 +19,19 @@ export class OrderComponent implements OnInit {
     this.order = this.orderService.newOrder;
   }
 
-  sendOrder() {
-    if(!this.order || this.order.orderItems.length !== 0){
-      this.orderService.createOrder(this.order);
+  async sendOrder() {
+    if (!this.order || this.order.orderItems.length !== 0) {
+      this.order =  await this.orderService.createOrder(this.order);
+      console.log(this.order);
       this.router.navigate(['orders/order_confirmed']);
     }
   }
-  deletePlate(plate:OrderList){
-    var index =this.order.orderItems.findIndex((i,index) =>{
-      if(i.namePlate == plate.namePlate){
-       return index}
+  deletePlate(plate: OrderList) {
+    const index = this.order.orderItems.findIndex((i, index) => {
+      if (i.namePlate === plate.namePlate) {
+       return index; }
     });
-    this.order.orderItems.splice(index,1);
+    this.order.orderItems.splice(index, 1);
     this.order.totalAmount -= plate.price;
   }
 

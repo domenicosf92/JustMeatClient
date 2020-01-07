@@ -14,6 +14,5 @@ export class OrderResultComponent implements OnInit {
   ngOnInit() {
     this.order = this.orderService.newOrder;
   }
-  
 
 }

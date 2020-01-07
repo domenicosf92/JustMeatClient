@@ -17,8 +17,8 @@ export class OrderService {
   public getOrders(): Promise<Order[]> {
     return this.httpClient.get<Order[]>(`${this.orderUrl}`).toPromise();
   }
-  public createOrder(order) {
-    this.httpClient.post(`${this.orderUrl}/create`, order).toPromise();
+  public createOrder(order: Order) {
+    return this.httpClient.post<Order>(`${this.orderUrl}/create`, order).toPromise();
   }
 
   public updateStatus(orderID: string) {
