@@ -10,7 +10,7 @@
                     </div>
                 </h1> 
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let plate of restaurant.plate"(click)="addPlate(plate)">
+                    <li class="list-group-item" *ngFor="let plate of restaurant.plate"(click)="addPlate(plate)" [hidden]="plate.name == ''">
                         {{plate.name}}
                         <span class="desc badge ">{{plate.price}} €</span>
                     </li>

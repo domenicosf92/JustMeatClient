@@ -16,7 +16,7 @@
                     <div class="col-1">Status</div>						
 					<div class="col-1">Totale</div>
                     <div class="col-1">Piatti</div>
-                    <div class="col-1">Cambia Stato</div>
+                    <div class="col-1" [hidden]="!auth.checkAdmin()">Cambia Stato</div>
                 </div>
                 <div class="row my-1 py-2 border shadow"  *ngFor="let order of orders; let i = index">
                     <div class="col-1">{{i+1}}</div >

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
   order: Order = {};
+  shipmentAddress: string;
 
   constructor(public orderService: OrderService,
               private router: Router) { }
@@ -20,6 +21,7 @@ export class OrderComponent implements OnInit {
   }
 
   async sendOrder() {
+    this.order.shippingAddress = this.shipmentAddress;
     if (!this.order || this.order.orderItems.length !== 0) {
       this.orderService.newOrder = await this.orderService.createOrder(this.order);
       this.router.navigate(['orders/order_confirmed']);
@@ -33,6 +35,10 @@ export class OrderComponent implements OnInit {
     });
     this.order.orderItems.splice(index, 1);
     this.order.totalAmount -= plate.price;
+  }
+
+  backToRestaurant() {
+    this.router.navigate(['./']);
   }
 
 }
