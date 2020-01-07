@@ -21,12 +21,12 @@ export class OrderComponent implements OnInit {
 
   async sendOrder() {
     if (!this.order || this.order.orderItems.length !== 0) {
-      this.order =  await this.orderService.createOrder(this.order);
-      console.log(this.order);
+      this.orderService.newOrder = await this.orderService.createOrder(this.order);
       this.router.navigate(['orders/order_confirmed']);
     }
   }
   deletePlate(plate: OrderList) {
+    // tslint:disable-next-line: no-shadowed-variable
     const index = this.order.orderItems.findIndex((i, index) => {
       if (i.namePlate === plate.namePlate) {
        return index; }
