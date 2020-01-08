@@ -1,0 +1,42 @@
+<div class="row pt-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+            <div class="card-header">
+                <h3 class="mb-0">Register</h3>
+            </div>
+            <div class="card-body">
+                <form class="form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control rounded-0" placeholder="Insert username" name="username" [(ngModel)]="registerUserData.username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control rounded-0" placeholder="Insert password" name="password" [(ngModel)]="registerUserData.password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control rounded-0" placeholder="Insert name" name="name" [(ngModel)]="registerUserData.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Surname</label>
+                        <input type="text" class="form-control rounded-0" placeholder="Insert surname" name="surname" [(ngModel)]="registerUserData.surname" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control rounded-0" placeholder="Insert address" name="address" [(ngModel)]="registerUserData.address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control rounded-0" placeholder="Insert phone number" name="phone" [(ngModel)]="registerUserData.phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control rounded-0" placeholder="Insert email address" name="email" [(ngModel)]="registerUserData.email" required>
+                    </div>
+                    <button (click)="registerUser()" type="button" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

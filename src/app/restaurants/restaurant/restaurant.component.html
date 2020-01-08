@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 p-0">
+            <div class="restaurant-table">
+                <h1>
+                    <div class="row">
+                        <div class="col-12 ">
+                            {{restaurant.name}}
+                        </div>
+                    </div>
+                </h1> 
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let plate of restaurant.plate"(click)="addPlate(plate)" [hidden]="plate.name == ''">
+                        {{plate.name}}
+                        <span class="desc badge ">{{plate.price}} €</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 p-0">
+                <div class="card cart">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="row">
+                                <div class="col">
+                                    <h5><span class="fa fa-shopping-cart"></span> Carrello</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf="plates">
+                        <div class="row border border-warning rounded bg-light align-middle py-2 mb-2"*ngFor="let plate of plates">
+                            <div class="col-6 my-auto">
+                                <p class="my-0" ><strong>{{plate.name}}</strong></p>
+                            </div>
+                            <div  class="col-6 my-auto">
+                                <div class="row">
+                                <div class="col-6 text-right my-auto">
+                                    <p class="my-0"><strong>{{plate.price | number : '1.2-2'}}€</strong></p>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-link btn-sm" (click)="deletePlate(plate)">
+                                        <span class="fa fa-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <hr class="checkout-hr-border">
+                        <div class="row">
+                                <div class="col-9">
+                                    <h6 class="text-right">Totale</h6>
+                                    <h6 class="text-right">Iva</h6>
+                                </div>
+                                <div class="col-3">
+                                    <h6 class="text-left">{{getTotalAmount() | number : '1.2-2'}}€</h6>
+                                    <h6 class="text-left">{{getTotalAmount()-(100 * getTotalAmount()) / 122 | number : '1.2-2'}} €</h6>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="card-footer cart-footer">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="text-right">Totale <strong>{{getTotalAmount() | number : '1.2-2'}}€</strong></h4>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-block checkout"(click)="sendOrder()">
+                                    Invia ordine
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+        </div>
+    </div>
+</div>

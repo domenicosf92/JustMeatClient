@@ -1,0 +1,39 @@
+<!--Navbar -->
+<nav class="mb-1 navbar bg-light navbar-expand-lg navbar-dark default-color py-3 main-navbar">
+    <div class="container">
+        <a class="navbar-brand" routerLink='./'>
+            <img style="width: 60px; padding: 0!important;" src="../assets/img/just-meat-logo.png" alt="logo Just Meat">
+        </a>
+        <button style="background-color: #266abd;" class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+          aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+          <span  class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink="./users" routerLinkActive="active" >Utenti Iscritti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink="./orders" routerLinkActive="active" >Lista Ordini</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="authService.checkAdmin()" routerLink='./newrestaurant'>Nuovo Ristorante</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [hidden]="authService.checkAdmin()" *ngIf="authService.loggedIn()" routerLink="./orders" >I miei ordini</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="!authService.loggedIn()" routerLink='./login'>Accedi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="!authService.loggedIn()" routerLink='./register'>Registrati</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="cursor: pointer" *ngIf="authService.loggedIn()" (click)="authService.logoutUser()">Logout</a>
+              </li>
+          </ul>
+        </div>
+    </div>
+</nav>

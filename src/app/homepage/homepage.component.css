@@ -1,0 +1,29 @@
+.firma-ara{
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+.bg-main{
+    background-image: url("https://www.plantbasednews.org/.image/t_share/MTY1NTk1NTY0ODEzNTI2MzAz/image-placeholder-title.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+.acik-renk-form{
+    background: rgba(255, 255, 255, 0.58);
+}
+.main-header{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px gray;
+}
+.main-p{
+    color: white;
+    text-shadow: 1px 1px gray;
+}
+
+.btn-order{
+    background-color: #266abd;
+    color : white;
+    font-weight: 600;
+}

@@ -1,0 +1,45 @@
+<div class="container">
+        <div class="card shopping-cart">
+                 <div class="card-header bg-dark text-light">
+                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                     Carrello
+                     <div class="clearfix"></div>
+                 </div>
+                 <div class="card-body">
+                         <!-- PRODUCT -->
+                         <div class="row border border-warning mb-2 py-2" *ngFor="let item of order.orderItems">
+                             <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-9">
+                                 <h4 class="product-name"><strong>{{item.name}}</strong></h4>
+                             </div>
+                             <div class="col-12 col-sm-12 text-sm-center col-md-3 text-md-right row">
+                                 <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                                     <h6><strong>{{item.price | number : '1.2-2'}}€ </strong></h6>
+                                 </div>
+                                 <div class="col-2 col-sm-2 col-md-2 text-right">
+                                     <button type="button" class="btn btn-outline-danger btn-xs" (click)="deletePlate(item)">
+                                         <i class="fa fa-trash" aria-hidden="true"></i>
+                                     </button>
+                                 </div>
+                             </div>
+                         </div>
+                         <hr>
+                         <!-- END PRODUCT -->
+                 </div>
+                 <div class="card-footer">
+                     <div class="pull-left" style="margin: 10px;">
+                        <button class="btn btn-info pull-left" (click)=backToRestaurant()>Torna al Ristorante</button>
+                    </div>
+                     <div class="pull-right" style="margin: 10px">
+                         <button class="btn btn-success pull-right" (click)="sendOrder()">Conferma Ordine</button>
+                         <div class="pull-right" style="margin: 5px">
+                            <label style="margin-right: 20px">Indirizzo spedizione</label>
+                            <input style="margin-right: 20px" type="text" [(ngModel)]="shipmentAddress">
+                        </div>
+                        <br>
+                         <div class="pull-right" style="margin: 5px">
+                             Costo totale: <b>{{order.totalAmount}}€</b>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+     </div>
