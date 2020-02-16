@@ -24,7 +24,6 @@ export class RestaurantsService {
   public async getRestaurantsByName(name: string): Promise<Restaurant> {
     return this.httpClient.get<Restaurant>(`${this.apiURL}/${name}`).toPromise();
   }
-
   public async createRestaurant(restaurant: Restaurant) {
     return this.httpClient.post<Restaurant>(`${this.apiURL}/create`, restaurant).toPromise();
   }

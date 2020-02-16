@@ -17,20 +17,8 @@ import { OrderService } from 'src/app/order/order.service';
 export class RestaurantComponent implements OnInit {
   order: Order = {};
   plates: OrderList[] = [];
-  restaurant: Restaurant = {
-    id: '',
-    name: '',
-    address: '',
-    city: '',
-    email: '',
-    plate: [{
-      name: '',
-      price: 0
-    }],
-    rating: '',
-    typology: ''
-  };
-  public restaurantName: string;
+  restaurant: Restaurant;
+  public restaurantId: string;
   userId: string;
   constructor(public restaurantsService: RestaurantsService ,
               public orderService: OrderService,
@@ -39,8 +27,8 @@ export class RestaurantComponent implements OnInit {
               private router: Router) {}
 
   async ngOnInit() {
-    this.restaurantName = this.route.snapshot.paramMap.get('restaurant');
-    this.restaurant = await this.restaurantsService.getRestaurantsByName(this.restaurantName);
+    this.restaurantId = this.route.snapshot.paramMap.get('restaurant');
+    this.restaurant = await this.restaurantsService.getRestaurantById(this.restaurantId);
     const token = this.auth.getToken();
     const decoded = jwt_decode(token) as any;
     this.userId = decoded.subject;
@@ -52,7 +40,7 @@ export class RestaurantComponent implements OnInit {
   deletePlate(plate: OrderList) {
     // tslint:disable-next-line: no-shadowed-variable
     const index = this.plates.findIndex((i, index) => {
-      if (i.namePlate === plate.namePlate) {
+      if (i.name === plate.name) {
        return index; }
     });
     this.plates.splice(index, 1);
@@ -67,9 +55,8 @@ export class RestaurantComponent implements OnInit {
 
   sendOrder() {
     if (this.plates) {
-      this.order.id = 'uuid';
-      this.order.userId = this.userId;
-      this.order.restaurantId = this.restaurant.id;
+      this.order.user = this.userId;
+      this.order.restaurant = this.restaurant._id;
       const timestampNow = new Date();
       const date = timestampNow.getDate() + '-' + (timestampNow.getMonth() + 1) + '-' + timestampNow.getFullYear();
       const time = timestampNow.getHours() + ':' + timestampNow.getMinutes() + ':' + timestampNow.getSeconds();
@@ -77,8 +64,7 @@ export class RestaurantComponent implements OnInit {
       this.order.date = dateOrder;
       this.order.orderItems = this.plates;
       this.order.totalAmount = this.getTotalAmount();
-      this.order.rating = null,
-      this.order.statusOrder = false;
+      this.order.statusOrder = 'NEW';
       this.orderService.newOrder = this.order;
       console.log(this.order);
       this.router.navigate(['/orders/create']);

@@ -1,16 +1,17 @@
+export interface Restaurant {
+  _id?: string;
+  name?: string;
+  address?: string;
+  city?: string;
+  email?: string;
+  plates?: Plate[];
+  rating?: number;
+  typology?: string;
+  avatar?: string;
+}
 
-    export interface Plate {
-        name?: string;
-        price?: number;
-    }
-
-    export interface Restaurant {
-        id?: string;
-        name?: string;
-        address?: string;
-        city?: string;
-        email?: string;
-        plate?: Plate[];
-        rating?: any;
-        typology?: string;
-    }
+export interface Plate {
+  _id?: string;
+  name?: string;
+  price?: number;
+}

@@ -21,9 +21,7 @@ export class NewRestaurantComponent implements OnInit {
   constructor(private restService: RestaurantsService, private router: Router) { }
 
   public createRestaurant() {
-    console.log(this.plates);
-    this.restaurant.plate=this.plates;
-    console.log(this.restaurant.plate);
+    this.restaurant.plates = this.plates;
     this.restService.createRestaurant(this.restaurant);
     //this.router.navigate(['/']);
   }

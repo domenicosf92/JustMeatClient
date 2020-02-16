@@ -32,7 +32,7 @@ export class OrderComponent implements OnInit {
   deletePlate(plate: OrderList) {
     // tslint:disable-next-line: no-shadowed-variable
     const index = this.order.orderItems.findIndex((i, index) => {
-      if (i.namePlate === plate.namePlate) {
+      if (i.name === plate.name) {
        return index; }
     });
     this.order.orderItems.splice(index, 1);

@@ -43,7 +43,7 @@ export class OrderListComponent implements OnInit {
       if(value.id === id) return value.name;
     }) */
     for (const rest of this.restaurants) {
-      if (rest.id === id) { return rest.name; }
+      if (rest._id === id) { return rest.name; }
     }
   }
 }
