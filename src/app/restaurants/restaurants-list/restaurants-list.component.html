@@ -7,13 +7,6 @@
                 <ul class="list-inline small restaurant-tags">
                     <li class="list-inline-item m-0" *ngFor='let typology of restaurant.typology.split(" ")'>{{typology.replace(","," &#9642;") | titlecase  }}</li>
                 </ul>
-<!--                 <ul class="list-inline small restaurant-stars">
-                    <li class="list-inline-item m-0"><i class="fa fa-star text-danger"></i></li>
-                    <li class="list-inline-item m-0"><i class="fa fa-star text-danger"></i></li>
-                    <li class="list-inline-item m-0"><i class="fa fa-star text-danger"></i></li>
-                    <li class="list-inline-item m-0"><i class="fa fa-star text-danger"></i></li>
-                    <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
-                </ul> -->
             </div>
         </div><img [src]="randomImage()" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
     </div>
